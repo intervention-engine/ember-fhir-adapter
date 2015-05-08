@@ -16,17 +16,16 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     }
 
     if (payload.resourceType == "Bundle") {
-      payload = payload.entry || [];
+      payload = payload.entry.mapBy('resource') || [];
     }
 
-    payload.id = payload.id || id || Ember.generateGuid({}, type,typeKey);
-    this._super(store, type, payload, id, requestType);
+    payload.id = payload.id || id || Ember.generateGuid({}, type.typeKey);
+    return payload
   },
 
   normalize: function(type, hash, prop){
     if (hash.content) {
-      hash.content.id = hash.content.id || hash.Identifier || Ember.generateGuid({}, type.typeKey);
-      this._super(type, hash.content, prop);
+      hash = hash.content
     }
     else
       hash.id = hash.id || hash.Identifier || Ember.generateGuid({}, type.typeKey);
