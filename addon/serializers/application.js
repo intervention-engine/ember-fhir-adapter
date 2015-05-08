@@ -2,6 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
+
   serializeIntoHash: function(hash, type, record, options){
     Ember.merge(hash, this.serialize(record, options));
   },
@@ -16,19 +17,17 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     }
 
     if (payload.resourceType == "Bundle") {
-      payload = payload.entry.mapBy('resource') || [];
+      // If this is DSTU1 you can use content in place of resource
+      payload = payload.entry.mapBy("resource") || [];
     }
 
     payload.id = payload.id || id || Ember.generateGuid({}, type.typeKey);
-    return payload
+    return this._super(store, type, payload, id, requestType)
   },
 
   normalize: function(type, hash, prop){
-    if (hash.content) {
-      hash = hash.content
-    }
-    else
-      hash.id = hash.id || hash.Identifier || Ember.generateGuid({}, type.typeKey);
-      this._super(type, hash, prop);
+    hash.id = hash.id || Ember.generateGuid({}, type.typeKey);
+    return this._super(type, hash, prop);
+
   }
 })
