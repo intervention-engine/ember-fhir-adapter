@@ -3,14 +3,15 @@ import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
-  normalize: function(typeClass, hash, prop){
-    hash.id = hash.id || Ember.generateGuid({}, typeClass.typeKey);
-    // var normalizedHash = this._super(typeClass, hash, prop);
-    return extractEmbeddedRecords(this, this.store, typeClass, hash);
-  },
+
   hasEmbeddedOption: function(type, attr){
     var meta = type.metaForProperty(attr)
     return meta && meta.options.embedded
+  },
+
+  hasSearchByOption: function(type, attr){
+    var meta = type.metaForProperty(attr)
+    return meta && meta.options.searchBy
   },
 
   serializeIntoHash: function(hash, type, record, options){
@@ -19,6 +20,13 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
   keyForAttribute: function(key, relationship){
     return Ember.String.capitalize(key);
+  },
+
+  normalize: function(typeClass, hash, prop){
+    hash.id = hash.id || Ember.generateGuid({}, typeClass.typeKey);
+    // var normalizedHash = this._super(typeClass, hash, prop);
+    hash = buildLinksHash(this, this.store, typeClass, hash);
+    return extractEmbeddedRecords(this, this.store, typeClass, hash);
   },
 
   extract: function(store, type, payload, id, requestType){
@@ -34,8 +42,21 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     payload.id = payload.id || id || Ember.generateGuid({}, type.typeKey);
     return this._super(store, type, payload, id, requestType)
   }
-
 })
+
+function buildLinksHash(serializer, store, typeClass, hash){
+  var adapter = store.adapterFor(serializer)
+  hash.links = hash.links || {}
+  typeClass.eachRelationship(function(key, relationship){
+    if(serializer.hasSearchByOption(typeClass, key)){
+      var searchBy = typeClass.metaForProperty(key).options.searchBy;
+      var query = {};
+      query[searchBy] = hash.id
+      hash.links[key] = adapter.buildURL(key, null, null, 'fhirQuery', query);
+    }
+  });
+  return hash
+}
 
 // chooses a relationship kind to branch which function is used to update payload
 // does not change payload if attr is not embedded
