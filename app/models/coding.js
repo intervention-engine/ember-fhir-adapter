@@ -7,11 +7,7 @@ Coding = DS.Model.extend({
   version: DS.attr('string'),
   code: DS.attr('string'),
   display: DS.attr('string'),
-  primary: DS.attr('boolean'),
-  valueSet: DS.belongsTo('resource-reference'),
-  toString: function() {
-    return this.get('display') || this.get('code');
-  }
+  primary: DS.attr('boolean')
 });
 
 export default Coding;

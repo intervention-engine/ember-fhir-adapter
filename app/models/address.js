@@ -8,7 +8,7 @@ Address = DS.Model.extend({
   line: DS.attr('string'),
   city: DS.attr('string'),
   state: DS.attr('string'),
-  zip: DS.attr('string'),
+  postalCode: DS.attr('string'),
   country: DS.attr('string'),
   period: DS.belongsTo('period')
 });
