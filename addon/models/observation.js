@@ -23,9 +23,6 @@ Observation = DS.Model.extend({
   specimen: DS.belongsTo('reference'),
   performer: DS.hasMany('reference'),
   encounter: DS.belongsTo('reference'),
-  isCoded: function(system, code) {
-    return this.get('name.coding').mapBy('code').indexOf(code) > -1;
-  },
   text: (function() {
     if (this.get('name.text') !== "") {
       return this.get('name.text').match(/:\s+([^(]+)\s+\(/)[1];
