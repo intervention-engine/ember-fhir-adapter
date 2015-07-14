@@ -7,22 +7,27 @@ Patient = DS.Model.extend({
   identifier: DS.hasMany('identifier', {embedded: true}),
   name: DS.hasMany('human-name', {embedded: true}),
   telecom: DS.hasMany('contact-point', {embedded: true}),
-  gender: DS.attr('string')
+  gender: DS.attr('string'),
   birthDate: DS.attr('date'),
   deceasedBoolean: DS.attr('boolean'),
   deceasedDateTime: DS.attr('date'),
   address: DS.hasMany('address', {embedded: true}),
-  maritalStatus: DS.belongsTo('codeable-concept', {embedded: true),
+  maritalStatus: DS.belongsTo('codeable-concept', {embedded: true}),
   multipleBirthBoolean: DS.attr('boolean'),
   multipleBirthInteger: DS.attr('number'),
   photo: DS.hasMany('attachment', {embedded: true}),
   contact: DS.hasMany('contact', {embedded: true}),
-  animal: DS.belongsTo('animal', {embedded: true),
+  animal: DS.belongsTo('animal', {embedded: true}),
   communication: DS.hasMany('codeable-concept', {embedded: true}),
   careProvider: DS.hasMany('reference', {embedded: true}),
-  managingOrganization: DS.belongsTo('reference', {embedded: true),
+  managingOrganization: DS.belongsTo('reference', {embedded: true}),
   link: DS.hasMany('link', {embedded: true}),
-  active: DS.attr('boolean')
+  active: DS.attr('boolean'),
+
+  fullName: (function(){
+    return this.get('name').get('firstObject')
+  }).property('name')
+
 });
 
 export default Patient;

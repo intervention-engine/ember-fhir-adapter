@@ -9,7 +9,12 @@ HumanName = DS.Model.extend({
   given: DS.attr('string'),
   prefix: DS.attr('string'),
   suffix: DS.attr('string'),
-  period: DS.belongsTo('period')
+  period: DS.belongsTo('period'),
+
+  toString: (function(){
+    return this.get('family') + ', ' + this.get('given');
+  })
+
 });
 
 export default HumanName;
