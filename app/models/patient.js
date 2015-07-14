@@ -22,7 +22,12 @@ Patient = DS.Model.extend({
   careProvider: DS.hasMany('reference', {embedded: true}),
   managingOrganization: DS.belongsTo('reference', {embedded: true}),
   link: DS.hasMany('link', {embedded: true}),
-  active: DS.attr('boolean')
+  active: DS.attr('boolean'),
+
+  fullName: (function(){
+    return this.get('name').get('firstObject')
+  }).property('name')
+
 });
 
 export default Patient;
