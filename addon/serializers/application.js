@@ -3,15 +3,26 @@ import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
+  serialize: function(snapshot, options){
+    let hash = this._super(snapshot, options);
+    for(var key in hash){
+      hash[key.camelize()] = hash[key];
+    delete hash[key];
+    }
+    hash.resourceType = snapshot.typeKey.capitalize();
+
+    return hash;
+
+  },
 
   hasEmbeddedOption: function(type, attr){
-    var meta = type.metaForProperty(attr)
-    return meta && meta.options.embedded
+    var meta = type.metaForProperty(attr);
+    return meta && meta.options.embedded;
   },
 
   hasSearchByOption: function(type, attr){
-    var meta = type.metaForProperty(attr)
-    return meta && meta.options.searchBy
+    var meta = type.metaForProperty(attr);
+    return meta && meta.options.searchBy;
   },
 
   serializeIntoHash: function(hash, type, record, options){
