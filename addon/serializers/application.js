@@ -29,11 +29,11 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     Ember.merge(hash, this.serialize(record, options));
   },
 
-  keyForAttribute: function(key, relationship){
+  keyForAttribute: function(key){
     return Ember.String.capitalize(key);
   },
 
-  normalize: function(typeClass, hash, prop){
+  normalize: function(typeClass, hash){
     hash.id = hash.id || Ember.generateGuid({}, typeClass.typeKey);
     // var normalizedHash = this._super(typeClass, hash, prop);
     hash = buildLinksHash(this, this.store, typeClass, hash);
@@ -45,28 +45,29 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
       return [];
     }
 
-    if (payload.resourceType == "Bundle") {
+    if (payload.resourceType === "Bundle" && payload.total > 0) {
       // If this is DSTU1 you can use content in place of resource
+
       payload = payload.entry.mapBy("resource") || [];
     }
 
     payload.id = payload.id || id || Ember.generateGuid({}, type.typeKey);
-    return this._super(store, type, payload, id, requestType)
+    return this._super(store, type, payload, id, requestType);
   }
-})
+});
 
 function buildLinksHash(serializer, store, typeClass, hash){
-  var adapter = store.adapterFor(serializer)
-  hash.links = hash.links || {}
-  typeClass.eachRelationship(function(key, relationship){
+  var adapter = store.adapterFor(serializer);
+  hash.links = hash.links || {};
+  typeClass.eachRelationship(function(key){
     if(serializer.hasSearchByOption(typeClass, key)){
       var searchBy = typeClass.metaForProperty(key).options.searchBy;
       var query = {};
-      query[searchBy] = hash.id
+      query[searchBy] = hash.id;
       hash.links[key] = adapter.buildURL(key, null, null, 'fhirQuery', query);
     }
   });
-  return hash
+  return hash;
 }
 
 // chooses a relationship kind to branch which function is used to update payload
