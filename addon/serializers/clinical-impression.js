@@ -35,6 +35,7 @@ var ClinicalImpression = ApplicationSerializer.extend({
 				previous : {embedded: 'always'},
 				problem : {embedded: 'always'},
 				triggerCodeableConcept : {embedded: 'always'},
+				triggerReference : {embedded: 'always'},
 				investigations:  {embedded: 'always'},
 				protocol : {embedded: 'always'},
 				finding:  {embedded: 'always'},

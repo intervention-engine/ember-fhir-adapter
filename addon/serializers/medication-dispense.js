@@ -38,6 +38,7 @@ var MedicationDispense = ApplicationSerializer.extend({
 				quantity : {embedded: 'always'},
 				daysSupply : {embedded: 'always'},
 				medicationCodeableConcept : {embedded: 'always'},
+				medicationReference : {embedded: 'always'},
 				destination : {embedded: 'always'},
 				receiver : {embedded: 'always'},
 				dosageInstruction:  {embedded: 'always'},

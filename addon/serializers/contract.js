@@ -44,6 +44,7 @@ var Contract = ApplicationSerializer.extend({
 				signer:  {embedded: 'always'},
 				term:  {embedded: 'always'},
 				bindingAttachment : {embedded: 'always'},
+				bindingReference : {embedded: 'always'},
 				friendly:  {embedded: 'always'},
 				legal:  {embedded: 'always'},
 				rule:  {embedded: 'always'}

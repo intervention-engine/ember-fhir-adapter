@@ -6,7 +6,8 @@ var SpecimenContainerComponent = ApplicationSerializer.extend({
 				type : {embedded: 'always'},
 				capacity : {embedded: 'always'},
 				specimenQuantity : {embedded: 'always'},
-				additiveCodeableConcept : {embedded: 'always'}
+				additiveCodeableConcept : {embedded: 'always'},
+				additiveReference : {embedded: 'always'}
     }
 });
 export default SpecimenContainerComponent;

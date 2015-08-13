@@ -36,6 +36,7 @@ var ProcedureRequest = ApplicationSerializer.extend({
 				bodySite:  {embedded: 'always'},
 				indication : {embedded: 'always'},
 				timingPeriod : {embedded: 'always'},
+				timingTiming : {embedded: 'always'},
 				encounter : {embedded: 'always'},
 				performer : {embedded: 'always'},
 				asNeededCodeableConcept : {embedded: 'always'},

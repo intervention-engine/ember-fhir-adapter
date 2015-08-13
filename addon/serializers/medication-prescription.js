@@ -35,7 +35,9 @@ var MedicationPrescription = ApplicationSerializer.extend({
 				prescriber : {embedded: 'always'},
 				encounter : {embedded: 'always'},
 				reasonCodeableConcept : {embedded: 'always'},
+				reasonReference : {embedded: 'always'},
 				medicationCodeableConcept : {embedded: 'always'},
+				medicationReference : {embedded: 'always'},
 				dosageInstruction:  {embedded: 'always'},
 				dispense:  {embedded: 'always'},
 				substitution:  {embedded: 'always'}

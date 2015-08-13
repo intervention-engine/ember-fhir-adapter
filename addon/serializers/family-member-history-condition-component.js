@@ -4,7 +4,8 @@ var FamilyMemberHistoryConditionComponent = ApplicationSerializer.extend({
     attrs:{
         type : {embedded: 'always'},
 				outcome : {embedded: 'always'},
-				onsetAge : {embedded: 'always'}
+				onsetAge : {embedded: 'always'},
+				onsetRange : {embedded: 'always'}
     }
 });
 export default FamilyMemberHistoryConditionComponent;

@@ -35,6 +35,7 @@ var Order = ApplicationSerializer.extend({
 				source : {embedded: 'always'},
 				target : {embedded: 'always'},
 				reasonCodeableConcept : {embedded: 'always'},
+				reasonReference : {embedded: 'always'},
 				when:  {embedded: 'always'},
 				detail : {embedded: 'always'}
     }

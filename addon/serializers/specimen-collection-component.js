@@ -6,7 +6,8 @@ var SpecimenCollectionComponent = ApplicationSerializer.extend({
 				collectedPeriod : {embedded: 'always'},
 				quantity : {embedded: 'always'},
 				method : {embedded: 'always'},
-				bodySiteCodeableConcept : {embedded: 'always'}
+				bodySiteCodeableConcept : {embedded: 'always'},
+				bodySiteReference : {embedded: 'always'}
     }
 });
 export default SpecimenCollectionComponent;

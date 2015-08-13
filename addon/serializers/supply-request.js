@@ -37,6 +37,7 @@ var SupplyRequest = ApplicationSerializer.extend({
 				orderedItem : {embedded: 'always'},
 				supplier : {embedded: 'always'},
 				reasonCodeableConcept : {embedded: 'always'},
+				reasonReference : {embedded: 'always'},
 				when:  {embedded: 'always'}
     }
 });

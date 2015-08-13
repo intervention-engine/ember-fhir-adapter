@@ -31,12 +31,14 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 var DeviceUseStatement = ApplicationSerializer.extend({
     attrs: {
         bodySiteCodeableConcept : {embedded: 'always'},
+				bodySiteReference : {embedded: 'always'},
 				whenUsed : {embedded: 'always'},
 				device : {embedded: 'always'},
 				identifier : {embedded: 'always'},
 				indication : {embedded: 'always'},
 				subject : {embedded: 'always'},
-				timingTiming : {embedded: 'always'}
+				timingTiming : {embedded: 'always'},
+				timingPeriod : {embedded: 'always'}
     }
 });
 export default DeviceUseStatement;

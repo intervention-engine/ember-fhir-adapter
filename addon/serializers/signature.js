@@ -33,6 +33,7 @@ var Signature = ApplicationSerializer.extend({
         type : {embedded: 'always'},
 				when : {embedded: 'always'},
 				whoUri : {embedded: 'always'},
+				whoReference : {embedded: 'always'},
 				blob : {embedded: 'always'}
     }
 });

@@ -35,6 +35,7 @@ var VisionPrescription = ApplicationSerializer.extend({
 				prescriber : {embedded: 'always'},
 				encounter : {embedded: 'always'},
 				reasonCodeableConcept : {embedded: 'always'},
+				reasonReference : {embedded: 'always'},
 				dispense:  {embedded: 'always'}
     }
 });

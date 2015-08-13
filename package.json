@@ -1,6 +1,6 @@
 {
   "name": "ember-fhir-adapter",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Adapter for interacting with FHIR servers.",
   "directories": {
     "doc": "doc",
