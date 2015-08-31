@@ -35,8 +35,6 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
   normalize: function(typeClass, hash){
     hash.id = hash.id || Ember.generateGuid({}, typeClass.typeKey);
-    // var normalizedHash = this._super(typeClass, hash, prop);
-    hash = buildLinksHash(this, this.store, typeClass, hash);
     return extractEmbeddedRecords(this, this.store, typeClass, hash);
   },
 
@@ -56,19 +54,6 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
   }
 });
 
-function buildLinksHash(serializer, store, typeClass, hash){
-  var adapter = store.adapterFor(serializer);
-  hash.links = hash.links || {};
-  typeClass.eachRelationship(function(key){
-    if(serializer.hasSearchByOption(typeClass, key)){
-      var searchBy = typeClass.metaForProperty(key).options.searchBy;
-      var query = {};
-      query[searchBy] = hash.id;
-      hash.links[key] = adapter.buildURL(key, null, null, 'fhirQuery', query);
-    }
-  });
-  return hash;
-}
 
 // chooses a relationship kind to branch which function is used to update payload
 // does not change payload if attr is not embedded
