@@ -32,9 +32,9 @@ var ValueSet = ApplicationSerializer.extend({
     attrs: {
         url : {embedded: 'always'},
 				identifier : {embedded: 'always'},
-				useContext : {embedded: 'always'},
 				contact:  {embedded: 'always'},
-				define:  {embedded: 'always'},
+				useContext : {embedded: 'always'},
+				codeSystem:  {embedded: 'always'},
 				compose:  {embedded: 'always'},
 				expansion:  {embedded: 'always'}
     }

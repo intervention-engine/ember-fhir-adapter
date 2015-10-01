@@ -2,7 +2,7 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var ProcedurePerformerComponent = ApplicationSerializer.extend({
     attrs:{
-        person : {embedded: 'always'},
+        actor : {embedded: 'always'},
 				role : {embedded: 'always'}
     }
 });

@@ -40,6 +40,7 @@ var Communication = DS.Model.extend({
     sent: DS.attr('date'),
     received: DS.attr('date'),
     reason: DS.hasMany('codeable-concept', {embedded: true}),
-    subject: DS.belongsTo('reference', {embedded: true})
+    subject: DS.belongsTo('reference', {embedded: true}),
+    requestDetail: DS.belongsTo('reference', {embedded: true})
 });
 export default Communication;

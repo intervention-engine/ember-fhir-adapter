@@ -35,6 +35,7 @@ var Questionnaire = DS.Model.extend({
     date: DS.attr('date'),
     publisher: DS.attr('string'),
     telecom: DS.hasMany('contact-point', {embedded: true}),
+    subjectType: DS.attr('string'),
     group:  DS.belongsTo('questionnaire-group-component', {embedded: true})
 });
 export default Questionnaire;

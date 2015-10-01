@@ -5,7 +5,8 @@ var GroupCharacteristicComponent = ApplicationSerializer.extend({
         code : {embedded: 'always'},
 				valueCodeableConcept : {embedded: 'always'},
 				valueQuantity : {embedded: 'always'},
-				valueRange : {embedded: 'always'}
+				valueRange : {embedded: 'always'},
+				period : {embedded: 'always'}
     }
 });
 export default GroupCharacteristicComponent;

@@ -33,7 +33,8 @@ var Flag = ApplicationSerializer.extend({
         identifier : {embedded: 'always'},
 				category : {embedded: 'always'},
 				period : {embedded: 'always'},
-				patient : {embedded: 'always'},
+				subject : {embedded: 'always'},
+				encounter : {embedded: 'always'},
 				author : {embedded: 'always'},
 				code : {embedded: 'always'}
     }

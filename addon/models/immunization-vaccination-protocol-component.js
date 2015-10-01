@@ -6,7 +6,7 @@ var ImmunizationVaccinationProtocolComponent = DS.Model.extend({
     authority: DS.belongsTo('reference', {embedded: true}),
     series: DS.attr('string'),
     seriesDoses: DS.attr('number'),
-    doseTarget: DS.belongsTo('codeable-concept', {embedded: true}),
+    targetDisease: DS.hasMany('codeable-concept', {embedded: true}),
     doseStatus: DS.belongsTo('codeable-concept', {embedded: true}),
     doseStatusReason: DS.belongsTo('codeable-concept', {embedded: true})
 });

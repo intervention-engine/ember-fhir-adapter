@@ -30,15 +30,20 @@ import DS from 'ember-data';
 
 var Goal = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
-    patient: DS.belongsTo('reference', {embedded: true}),
+    subject: DS.belongsTo('reference', {embedded: true}),
+    startDate: DS.attr('date'),
+    startCodeableConcept: DS.belongsTo('codeable-concept', {embedded: true}),
     targetDate: DS.attr('date'),
+    targetDuration: DS.belongsTo('quantity', {embedded: true}),
+    category: DS.hasMany('codeable-concept', {embedded: true}),
     description: DS.attr('string'),
     status: DS.attr('string'),
     statusDate: DS.attr('date'),
+    statusReason: DS.belongsTo('codeable-concept', {embedded: true}),
     author: DS.belongsTo('reference', {embedded: true}),
     priority: DS.belongsTo('codeable-concept', {embedded: true}),
-    concern: DS.hasMany('reference', {embedded: true}),
-    notes: DS.attr('string'),
+    addresses: DS.hasMany('reference', {embedded: true}),
+    note: DS.hasMany('annotation', {embedded: true}),
     outcome:  DS.hasMany('goal-outcome-component', {embedded: true})
 });
 export default Goal;

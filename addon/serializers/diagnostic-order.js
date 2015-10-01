@@ -34,10 +34,12 @@ var DiagnosticOrder = ApplicationSerializer.extend({
 				orderer : {embedded: 'always'},
 				identifier : {embedded: 'always'},
 				encounter : {embedded: 'always'},
+				reason : {embedded: 'always'},
 				supportingInformation : {embedded: 'always'},
 				specimen : {embedded: 'always'},
 				event:  {embedded: 'always'},
-				item:  {embedded: 'always'}
+				item:  {embedded: 'always'},
+				note : {embedded: 'always'}
     }
 });
 export default DiagnosticOrder;

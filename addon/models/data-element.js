@@ -30,17 +30,17 @@ import DS from 'ember-data';
 
 var DataElement = DS.Model.extend({
     url: DS.attr('string'),
-    identifier: DS.belongsTo('identifier', {embedded: true}),
+    identifier: DS.hasMany('identifier', {embedded: true}),
     version: DS.attr('string'),
     name: DS.attr('string'),
-    useContext: DS.hasMany('codeable-concept', {embedded: true}),
-    experimental: DS.attr('boolean'),
     status: DS.attr('string'),
-    date: DS.attr('date'),
-    copyright: DS.attr('string'),
+    experimental: DS.attr('boolean'),
     publisher: DS.attr('string'),
     contact:  DS.hasMany('data-element-contact-component', {embedded: true}),
-    specificity: DS.attr('string'),
+    date: DS.attr('date'),
+    useContext: DS.hasMany('codeable-concept', {embedded: true}),
+    copyright: DS.attr('string'),
+    stringency: DS.attr('string'),
     mapping:  DS.hasMany('data-element-mapping-component', {embedded: true}),
     element: DS.hasMany('element-definition', {embedded: true})
 });

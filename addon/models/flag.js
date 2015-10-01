@@ -33,7 +33,8 @@ var Flag = DS.Model.extend({
     category: DS.belongsTo('codeable-concept', {embedded: true}),
     status: DS.attr('string'),
     period: DS.belongsTo('period', {embedded: true}),
-    patient: DS.belongsTo('reference', {embedded: true}),
+    subject: DS.belongsTo('reference', {embedded: true}),
+    encounter: DS.belongsTo('reference', {embedded: true}),
     author: DS.belongsTo('reference', {embedded: true}),
     code: DS.belongsTo('codeable-concept', {embedded: true})
 });

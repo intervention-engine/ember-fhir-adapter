@@ -31,10 +31,15 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 var Goal = ApplicationSerializer.extend({
     attrs: {
         identifier : {embedded: 'always'},
-				patient : {embedded: 'always'},
+				subject : {embedded: 'always'},
+				startCodeableConcept : {embedded: 'always'},
+				targetDuration : {embedded: 'always'},
+				category : {embedded: 'always'},
+				statusReason : {embedded: 'always'},
 				author : {embedded: 'always'},
 				priority : {embedded: 'always'},
-				concern : {embedded: 'always'},
+				addresses : {embedded: 'always'},
+				note : {embedded: 'always'},
 				outcome:  {embedded: 'always'}
     }
 });

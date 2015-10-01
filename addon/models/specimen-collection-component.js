@@ -7,7 +7,6 @@ var SpecimenCollectionComponent = DS.Model.extend({
     collectedPeriod: DS.belongsTo('period', {embedded: true}),
     quantity: DS.belongsTo('quantity', {embedded: true}),
     method: DS.belongsTo('codeable-concept', {embedded: true}),
-    bodySiteCodeableConcept: DS.belongsTo('codeable-concept', {embedded: true}),
-    bodySiteReference: DS.belongsTo('reference', {embedded: true})
+    bodySite: DS.belongsTo('codeable-concept', {embedded: true})
 });
 export default SpecimenCollectionComponent;

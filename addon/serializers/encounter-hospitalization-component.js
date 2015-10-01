@@ -5,6 +5,8 @@ var EncounterHospitalizationComponent = ApplicationSerializer.extend({
         preAdmissionIdentifier : {embedded: 'always'},
 				origin : {embedded: 'always'},
 				admitSource : {embedded: 'always'},
+				admittingDiagnosis : {embedded: 'always'},
+				reAdmission : {embedded: 'always'},
 				dietPreference : {embedded: 'always'},
 				specialCourtesy : {embedded: 'always'},
 				specialArrangement : {embedded: 'always'},

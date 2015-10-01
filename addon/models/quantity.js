@@ -31,7 +31,7 @@ import DS from 'ember-data';
 var Quantity = DS.Model.extend({
     value: DS.attr('number'),
     comparator: DS.attr('string'),
-    units: DS.attr('string'),
+    unit: DS.attr('string'),
     system: DS.attr('string'),
     code: DS.attr('string')
 });

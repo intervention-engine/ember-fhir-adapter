@@ -30,6 +30,7 @@ import DS from 'ember-data';
 
 var Practitioner = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
+    active: DS.attr('boolean'),
     name: DS.belongsTo('human-name', {embedded: true}),
     telecom: DS.hasMany('contact-point', {embedded: true}),
     address: DS.hasMany('address', {embedded: true}),

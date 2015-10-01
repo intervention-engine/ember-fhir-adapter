@@ -35,15 +35,14 @@ var DocumentReference = ApplicationSerializer.extend({
 				subject : {embedded: 'always'},
 				type : {embedded: 'always'},
 				class : {embedded: 'always'},
-				format : {embedded: 'always'},
 				author : {embedded: 'always'},
 				custodian : {embedded: 'always'},
 				authenticator : {embedded: 'always'},
 				indexed : {embedded: 'always'},
 				docStatus : {embedded: 'always'},
 				relatesTo:  {embedded: 'always'},
-				confidentiality : {embedded: 'always'},
-				content : {embedded: 'always'},
+				securityLabel : {embedded: 'always'},
+				content:  {embedded: 'always'},
 				context:  {embedded: 'always'}
     }
 });

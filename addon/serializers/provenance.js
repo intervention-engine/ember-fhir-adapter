@@ -34,6 +34,7 @@ var Provenance = ApplicationSerializer.extend({
 				period : {embedded: 'always'},
 				recorded : {embedded: 'always'},
 				reason : {embedded: 'always'},
+				activity : {embedded: 'always'},
 				location : {embedded: 'always'},
 				policy : {embedded: 'always'},
 				agent:  {embedded: 'always'},

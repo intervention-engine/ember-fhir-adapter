@@ -32,8 +32,8 @@ var StructureDefinition = ApplicationSerializer.extend({
     attrs: {
         url : {embedded: 'always'},
 				identifier : {embedded: 'always'},
-				useContext : {embedded: 'always'},
 				contact:  {embedded: 'always'},
+				useContext : {embedded: 'always'},
 				code : {embedded: 'always'},
 				fhirVersion : {embedded: 'always'},
 				mapping:  {embedded: 'always'},

@@ -29,7 +29,6 @@ import DS from 'ember-data';
 
 
 var MessageHeader = DS.Model.extend({
-    identifier: DS.attr('string'),
     timestamp: DS.attr('date'),
     event: DS.belongsTo('coding', {embedded: true}),
     response:  DS.belongsTo('message-header-response-component', {embedded: true}),

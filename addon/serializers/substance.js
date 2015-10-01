@@ -30,7 +30,9 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var Substance = ApplicationSerializer.extend({
     attrs: {
-        type : {embedded: 'always'},
+        identifier : {embedded: 'always'},
+				category : {embedded: 'always'},
+				code : {embedded: 'always'},
 				instance:  {embedded: 'always'},
 				ingredient:  {embedded: 'always'}
     }

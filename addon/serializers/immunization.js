@@ -31,7 +31,7 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 var Immunization = ApplicationSerializer.extend({
     attrs: {
         identifier : {embedded: 'always'},
-				vaccineType : {embedded: 'always'},
+				vaccineCode : {embedded: 'always'},
 				patient : {embedded: 'always'},
 				performer : {embedded: 'always'},
 				requester : {embedded: 'always'},
@@ -41,6 +41,7 @@ var Immunization = ApplicationSerializer.extend({
 				site : {embedded: 'always'},
 				route : {embedded: 'always'},
 				doseQuantity : {embedded: 'always'},
+				note : {embedded: 'always'},
 				explanation:  {embedded: 'always'},
 				reaction:  {embedded: 'always'},
 				vaccinationProtocol:  {embedded: 'always'}

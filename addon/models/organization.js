@@ -30,12 +30,12 @@ import DS from 'ember-data';
 
 var Organization = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
-    name: DS.attr('string'),
+    active: DS.attr('boolean'),
     type: DS.belongsTo('codeable-concept', {embedded: true}),
+    name: DS.attr('string'),
     telecom: DS.hasMany('contact-point', {embedded: true}),
     address: DS.hasMany('address', {embedded: true}),
     partOf: DS.belongsTo('reference', {embedded: true}),
-    contact:  DS.hasMany('organization-contact-component', {embedded: true}),
-    active: DS.attr('boolean')
+    contact:  DS.hasMany('organization-contact-component', {embedded: true})
 });
 export default Organization;

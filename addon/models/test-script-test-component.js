@@ -3,7 +3,7 @@ import DS from 'ember-data';
 var TestScriptTestComponent = DS.Model.extend({
     name: DS.attr('string'),
     description: DS.attr('string'),
-    metadata:  DS.belongsTo('test-script-test-metadata-component', {embedded: true}),
-    operation:  DS.hasMany('test-script-test-operation-component', {embedded: true})
+    metadata: DS.belongsTo('test-script-metadata-component', {embedded: true}),
+    action:  DS.hasMany('test-script-test-action-component', {embedded: true})
 });
 export default TestScriptTestComponent;

@@ -31,16 +31,18 @@ import DS from 'ember-data';
 var SearchParameter = DS.Model.extend({
     url: DS.attr('string'),
     name: DS.attr('string'),
-    publisher: DS.attr('string'),
-    contact:  DS.hasMany('search-parameter-contact-component', {embedded: true}),
-    requirements: DS.attr('string'),
     status: DS.attr('string'),
     experimental: DS.attr('boolean'),
+    publisher: DS.attr('string'),
+    contact:  DS.hasMany('search-parameter-contact-component', {embedded: true}),
     date: DS.attr('date'),
+    requirements: DS.attr('string'),
+    code: DS.attr('string'),
     base: DS.attr('string'),
     type: DS.attr('string'),
     description: DS.attr('string'),
     xpath: DS.attr('string'),
+    xpathUsage: DS.attr('string'),
     target: DS.attr('string')
 });
 export default SearchParameter;

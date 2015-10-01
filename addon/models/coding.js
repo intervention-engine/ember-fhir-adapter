@@ -33,6 +33,6 @@ var Coding = DS.Model.extend({
     version: DS.attr('string'),
     code: DS.attr('string'),
     display: DS.attr('string'),
-    primary: DS.attr('boolean')
+    userSelected: DS.attr('boolean')
 });
 export default Coding;

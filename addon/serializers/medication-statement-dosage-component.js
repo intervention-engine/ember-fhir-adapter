@@ -2,13 +2,16 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var MedicationStatementDosageComponent = ApplicationSerializer.extend({
     attrs:{
-        schedule : {embedded: 'always'},
+        timing : {embedded: 'always'},
 				asNeededCodeableConcept : {embedded: 'always'},
-				site : {embedded: 'always'},
+				siteCodeableConcept : {embedded: 'always'},
+				siteReference : {embedded: 'always'},
 				route : {embedded: 'always'},
 				method : {embedded: 'always'},
-				quantity : {embedded: 'always'},
-				rate : {embedded: 'always'},
+				quantitySimpleQuantity : {embedded: 'always'},
+				quantityRange : {embedded: 'always'},
+				rateRatio : {embedded: 'always'},
+				rateRange : {embedded: 'always'},
 				maxDosePerPeriod : {embedded: 'always'}
     }
 });

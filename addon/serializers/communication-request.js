@@ -38,6 +38,7 @@ var CommunicationRequest = ApplicationSerializer.extend({
 				medium : {embedded: 'always'},
 				requester : {embedded: 'always'},
 				encounter : {embedded: 'always'},
+				scheduledPeriod : {embedded: 'always'},
 				reason : {embedded: 'always'},
 				subject : {embedded: 'always'},
 				priority : {embedded: 'always'}

@@ -30,6 +30,7 @@ import DS from 'ember-data';
 
 var Specimen = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
+    status: DS.attr('string'),
     type: DS.belongsTo('codeable-concept', {embedded: true}),
     parent: DS.hasMany('reference', {embedded: true}),
     subject: DS.belongsTo('reference', {embedded: true}),

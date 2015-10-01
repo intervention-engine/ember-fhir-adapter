@@ -5,8 +5,8 @@ var ConformanceRestComponent = ApplicationSerializer.extend({
         security:  {embedded: 'always'},
 				resource:  {embedded: 'always'},
 				interaction:  {embedded: 'always'},
+				searchParam : {embedded: 'always'},
 				operation:  {embedded: 'always'},
-				documentMailbox : {embedded: 'always'},
 				compartment : {embedded: 'always'}
     }
 });

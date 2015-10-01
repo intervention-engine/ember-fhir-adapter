@@ -32,8 +32,8 @@ var ConceptMap = ApplicationSerializer.extend({
     attrs: {
         url : {embedded: 'always'},
 				identifier : {embedded: 'always'},
-				useContext : {embedded: 'always'},
 				contact:  {embedded: 'always'},
+				useContext : {embedded: 'always'},
 				sourceUri : {embedded: 'always'},
 				sourceReference : {embedded: 'always'},
 				targetUri : {embedded: 'always'},

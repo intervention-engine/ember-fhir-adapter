@@ -8,6 +8,7 @@ var QuestionnaireQuestionComponent = DS.Model.extend({
     required: DS.attr('boolean'),
     repeats: DS.attr('boolean'),
     options: DS.belongsTo('reference', {embedded: true}),
+    option: DS.hasMany('coding', {embedded: true}),
     group: DS.hasMany('questionnaire-group-component', {embedded: true})
 });
 export default QuestionnaireQuestionComponent;

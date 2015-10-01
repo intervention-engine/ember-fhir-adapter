@@ -31,15 +31,18 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 var CarePlan = ApplicationSerializer.extend({
     attrs: {
         identifier : {embedded: 'always'},
-				patient : {embedded: 'always'},
+				subject : {embedded: 'always'},
+				context : {embedded: 'always'},
 				period : {embedded: 'always'},
 				author : {embedded: 'always'},
 				category : {embedded: 'always'},
-				concern : {embedded: 'always'},
+				addresses : {embedded: 'always'},
 				support : {embedded: 'always'},
+				relatedPlan:  {embedded: 'always'},
 				participant:  {embedded: 'always'},
 				goal : {embedded: 'always'},
-				activity:  {embedded: 'always'}
+				activity:  {embedded: 'always'},
+				note : {embedded: 'always'}
     }
 });
 export default CarePlan;

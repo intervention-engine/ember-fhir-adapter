@@ -30,9 +30,10 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var NamingSystem = ApplicationSerializer.extend({
     attrs: {
-        category : {embedded: 'always'},
+        contact:  {embedded: 'always'},
+				type : {embedded: 'always'},
+				useContext : {embedded: 'always'},
 				uniqueId:  {embedded: 'always'},
-				contact:  {embedded: 'always'},
 				replacedBy : {embedded: 'always'}
     }
 });

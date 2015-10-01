@@ -32,9 +32,9 @@ var HealthcareService = ApplicationSerializer.extend({
     attrs: {
         identifier : {embedded: 'always'},
 				providedBy : {embedded: 'always'},
-				location : {embedded: 'always'},
 				serviceCategory : {embedded: 'always'},
 				serviceType:  {embedded: 'always'},
+				location : {embedded: 'always'},
 				photo : {embedded: 'always'},
 				telecom : {embedded: 'always'},
 				coverageArea : {embedded: 'always'},

@@ -30,6 +30,7 @@ import DS from 'ember-data';
 
 var Location = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
+    status: DS.attr('string'),
     name: DS.attr('string'),
     description: DS.attr('string'),
     mode: DS.attr('string'),
@@ -39,7 +40,6 @@ var Location = DS.Model.extend({
     physicalType: DS.belongsTo('codeable-concept', {embedded: true}),
     position:  DS.belongsTo('location-position-component', {embedded: true}),
     managingOrganization: DS.belongsTo('reference', {embedded: true}),
-    partOf: DS.belongsTo('reference', {embedded: true}),
-    status: DS.attr('string')
+    partOf: DS.belongsTo('reference', {embedded: true})
 });
 export default Location;

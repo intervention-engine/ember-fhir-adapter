@@ -41,6 +41,7 @@ var MedicationStatement = DS.Model.extend({
     effectiveDateTime: DS.attr('date'),
     effectivePeriod: DS.belongsTo('period', {embedded: true}),
     note: DS.attr('string'),
+    supportingInformation: DS.hasMany('reference', {embedded: true}),
     medicationCodeableConcept: DS.belongsTo('codeable-concept', {embedded: true}),
     medicationReference: DS.belongsTo('reference', {embedded: true}),
     dosage:  DS.hasMany('medication-statement-dosage-component', {embedded: true})

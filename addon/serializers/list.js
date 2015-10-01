@@ -34,6 +34,7 @@ var List = ApplicationSerializer.extend({
 				code : {embedded: 'always'},
 				subject : {embedded: 'always'},
 				source : {embedded: 'always'},
+				encounter : {embedded: 'always'},
 				orderedBy : {embedded: 'always'},
 				entry:  {embedded: 'always'},
 				emptyReason : {embedded: 'always'}

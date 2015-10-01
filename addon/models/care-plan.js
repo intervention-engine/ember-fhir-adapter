@@ -30,17 +30,20 @@ import DS from 'ember-data';
 
 var CarePlan = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
-    patient: DS.belongsTo('reference', {embedded: true}),
+    subject: DS.belongsTo('reference', {embedded: true}),
     status: DS.attr('string'),
+    context: DS.belongsTo('reference', {embedded: true}),
     period: DS.belongsTo('period', {embedded: true}),
     author: DS.hasMany('reference', {embedded: true}),
     modified: DS.attr('date'),
     category: DS.hasMany('codeable-concept', {embedded: true}),
-    concern: DS.hasMany('reference', {embedded: true}),
+    description: DS.attr('string'),
+    addresses: DS.hasMany('reference', {embedded: true}),
     support: DS.hasMany('reference', {embedded: true}),
+    relatedPlan:  DS.hasMany('care-plan-related-plan-component', {embedded: true}),
     participant:  DS.hasMany('care-plan-participant-component', {embedded: true}),
     goal: DS.hasMany('reference', {embedded: true}),
     activity:  DS.hasMany('care-plan-activity-component', {embedded: true}),
-    notes: DS.attr('string')
+    note: DS.belongsTo('annotation', {embedded: true})
 });
 export default CarePlan;

@@ -30,7 +30,7 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var Attachment = ApplicationSerializer.extend({
     attrs: {
-        foo : {embedded: 'always'},
+        dataAttr : {embedded: 'always'},
 				url : {embedded: 'always'},
 				size : {embedded: 'always'},
 				hash : {embedded: 'always'}

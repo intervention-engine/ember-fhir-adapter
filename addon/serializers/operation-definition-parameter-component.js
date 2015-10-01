@@ -4,7 +4,8 @@ var OperationDefinitionParameterComponent = ApplicationSerializer.extend({
     attrs:{
         min : {embedded: 'always'},
 				profile : {embedded: 'always'},
-				part:  {embedded: 'always'}
+				binding:  {embedded: 'always'},
+				part : {embedded: 'always'}
     }
 });
 export default OperationDefinitionParameterComponent;

@@ -30,8 +30,7 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var MessageHeader = ApplicationSerializer.extend({
     attrs: {
-        identifier : {embedded: 'always'},
-				timestamp : {embedded: 'always'},
+        timestamp : {embedded: 'always'},
 				event : {embedded: 'always'},
 				response:  {embedded: 'always'},
 				source:  {embedded: 'always'},
@@ -41,7 +40,7 @@ var MessageHeader = ApplicationSerializer.extend({
 				receiver : {embedded: 'always'},
 				responsible : {embedded: 'always'},
 				reason : {embedded: 'always'},
-				foo : {embedded: 'always'}
+				dataAttr : {embedded: 'always'}
     }
 });
 export default MessageHeader;

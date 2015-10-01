@@ -32,10 +32,10 @@ var AppointmentResponse = ApplicationSerializer.extend({
     attrs: {
         identifier : {embedded: 'always'},
 				appointment : {embedded: 'always'},
-				participantType : {embedded: 'always'},
-				actor : {embedded: 'always'},
 				start : {embedded: 'always'},
-				end : {embedded: 'always'}
+				end : {embedded: 'always'},
+				participantType : {embedded: 'always'},
+				actor : {embedded: 'always'}
     }
 });
 export default AppointmentResponse;

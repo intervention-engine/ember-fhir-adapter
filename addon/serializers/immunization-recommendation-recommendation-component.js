@@ -2,7 +2,7 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var ImmunizationRecommendationRecommendationComponent = ApplicationSerializer.extend({
     attrs:{
-        vaccineType : {embedded: 'always'},
+        vaccineCode : {embedded: 'always'},
 				doseNumber : {embedded: 'always'},
 				forecastStatus : {embedded: 'always'},
 				dateCriterion:  {embedded: 'always'},

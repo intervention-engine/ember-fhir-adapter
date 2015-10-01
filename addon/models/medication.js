@@ -29,11 +29,9 @@ import DS from 'ember-data';
 
 
 var Medication = DS.Model.extend({
-    name: DS.attr('string'),
     code: DS.belongsTo('codeable-concept', {embedded: true}),
     isBrand: DS.attr('boolean'),
     manufacturer: DS.belongsTo('reference', {embedded: true}),
-    kind: DS.attr('string'),
     product:  DS.belongsTo('medication-product-component', {embedded: true}),
     package:  DS.belongsTo('medication-package-component', {embedded: true})
 });

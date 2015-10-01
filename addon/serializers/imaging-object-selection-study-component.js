@@ -4,6 +4,7 @@ var ImagingObjectSelectionStudyComponent = ApplicationSerializer.extend({
     attrs:{
         uid : {embedded: 'always'},
 				url : {embedded: 'always'},
+				imagingStudy : {embedded: 'always'},
 				series:  {embedded: 'always'}
     }
 });

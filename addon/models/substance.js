@@ -29,9 +29,11 @@ import DS from 'ember-data';
 
 
 var Substance = DS.Model.extend({
-    type: DS.belongsTo('codeable-concept', {embedded: true}),
+    identifier: DS.hasMany('identifier', {embedded: true}),
+    category: DS.hasMany('codeable-concept', {embedded: true}),
+    code: DS.belongsTo('codeable-concept', {embedded: true}),
     description: DS.attr('string'),
-    instance:  DS.belongsTo('substance-instance-component', {embedded: true}),
+    instance:  DS.hasMany('substance-instance-component', {embedded: true}),
     ingredient:  DS.hasMany('substance-ingredient-component', {embedded: true})
 });
 export default Substance;

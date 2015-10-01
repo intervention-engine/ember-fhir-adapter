@@ -2,9 +2,12 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var TimingRepeatComponent = ApplicationSerializer.extend({
     attrs:{
-        bounds : {embedded: 'always'},
+        boundsDuration : {embedded: 'always'},
+				boundsRange : {embedded: 'always'},
+				boundsPeriod : {embedded: 'always'},
 				count : {embedded: 'always'},
 				duration : {embedded: 'always'},
+				durationMax : {embedded: 'always'},
 				frequency : {embedded: 'always'},
 				frequencyMax : {embedded: 'always'},
 				period : {embedded: 'always'},

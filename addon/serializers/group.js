@@ -34,7 +34,7 @@ var Group = ApplicationSerializer.extend({
 				code : {embedded: 'always'},
 				quantity : {embedded: 'always'},
 				characteristic:  {embedded: 'always'},
-				member : {embedded: 'always'}
+				member:  {embedded: 'always'}
     }
 });
 export default Group;

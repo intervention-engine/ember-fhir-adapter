@@ -30,7 +30,8 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var ContactPoint = ApplicationSerializer.extend({
     attrs: {
-        period : {embedded: 'always'}
+        rank : {embedded: 'always'},
+				period : {embedded: 'always'}
     }
 });
 export default ContactPoint;

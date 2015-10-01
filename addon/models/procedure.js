@@ -30,12 +30,15 @@ import DS from 'ember-data';
 
 var Procedure = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
-    patient: DS.belongsTo('reference', {embedded: true}),
+    subject: DS.belongsTo('reference', {embedded: true}),
     status: DS.attr('string'),
     category: DS.belongsTo('codeable-concept', {embedded: true}),
-    type: DS.belongsTo('codeable-concept', {embedded: true}),
-    bodySite:  DS.hasMany('procedure-body-site-component', {embedded: true}),
-    indication: DS.hasMany('codeable-concept', {embedded: true}),
+    code: DS.belongsTo('codeable-concept', {embedded: true}),
+    notPerformed: DS.attr('boolean'),
+    reasonNotPerformed: DS.hasMany('codeable-concept', {embedded: true}),
+    bodySite: DS.hasMany('codeable-concept', {embedded: true}),
+    reasonCodeableConcept: DS.belongsTo('codeable-concept', {embedded: true}),
+    reasonReference: DS.belongsTo('reference', {embedded: true}),
     performer:  DS.hasMany('procedure-performer-component', {embedded: true}),
     performedDateTime: DS.attr('date'),
     performedPeriod: DS.belongsTo('period', {embedded: true}),
@@ -45,9 +48,9 @@ var Procedure = DS.Model.extend({
     report: DS.hasMany('reference', {embedded: true}),
     complication: DS.hasMany('codeable-concept', {embedded: true}),
     followUp: DS.hasMany('codeable-concept', {embedded: true}),
-    relatedItem:  DS.hasMany('procedure-related-item-component', {embedded: true}),
-    notes: DS.attr('string'),
-    device:  DS.hasMany('procedure-device-component', {embedded: true}),
+    request: DS.belongsTo('reference', {embedded: true}),
+    notes: DS.hasMany('annotation', {embedded: true}),
+    focalDevice:  DS.hasMany('procedure-focal-device-component', {embedded: true}),
     used: DS.hasMany('reference', {embedded: true})
 });
 export default Procedure;

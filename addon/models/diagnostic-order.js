@@ -33,12 +33,13 @@ var DiagnosticOrder = DS.Model.extend({
     orderer: DS.belongsTo('reference', {embedded: true}),
     identifier: DS.hasMany('identifier', {embedded: true}),
     encounter: DS.belongsTo('reference', {embedded: true}),
-    clinicalNotes: DS.attr('string'),
+    reason: DS.hasMany('codeable-concept', {embedded: true}),
     supportingInformation: DS.hasMany('reference', {embedded: true}),
     specimen: DS.hasMany('reference', {embedded: true}),
     status: DS.attr('string'),
     priority: DS.attr('string'),
     event:  DS.hasMany('diagnostic-order-event-component', {embedded: true}),
-    item:  DS.hasMany('diagnostic-order-item-component', {embedded: true})
+    item:  DS.hasMany('diagnostic-order-item-component', {embedded: true}),
+    note: DS.hasMany('annotation', {embedded: true})
 });
 export default DiagnosticOrder;

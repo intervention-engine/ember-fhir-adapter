@@ -31,11 +31,13 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 var Procedure = ApplicationSerializer.extend({
     attrs: {
         identifier : {embedded: 'always'},
-				patient : {embedded: 'always'},
+				subject : {embedded: 'always'},
 				category : {embedded: 'always'},
-				type : {embedded: 'always'},
-				bodySite:  {embedded: 'always'},
-				indication : {embedded: 'always'},
+				code : {embedded: 'always'},
+				reasonNotPerformed : {embedded: 'always'},
+				bodySite : {embedded: 'always'},
+				reasonCodeableConcept : {embedded: 'always'},
+				reasonReference : {embedded: 'always'},
 				performer:  {embedded: 'always'},
 				performedPeriod : {embedded: 'always'},
 				encounter : {embedded: 'always'},
@@ -44,8 +46,9 @@ var Procedure = ApplicationSerializer.extend({
 				report : {embedded: 'always'},
 				complication : {embedded: 'always'},
 				followUp : {embedded: 'always'},
-				relatedItem:  {embedded: 'always'},
-				device:  {embedded: 'always'},
+				request : {embedded: 'always'},
+				notes : {embedded: 'always'},
+				focalDevice:  {embedded: 'always'},
 				used : {embedded: 'always'}
     }
 });

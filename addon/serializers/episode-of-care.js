@@ -33,10 +33,10 @@ var EpisodeOfCare = ApplicationSerializer.extend({
         identifier : {embedded: 'always'},
 				statusHistory:  {embedded: 'always'},
 				type : {embedded: 'always'},
+				condition : {embedded: 'always'},
 				patient : {embedded: 'always'},
 				managingOrganization : {embedded: 'always'},
 				period : {embedded: 'always'},
-				condition : {embedded: 'always'},
 				referralRequest : {embedded: 'always'},
 				careManager : {embedded: 'always'},
 				careTeam:  {embedded: 'always'}

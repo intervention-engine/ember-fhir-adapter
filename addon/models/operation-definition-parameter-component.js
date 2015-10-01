@@ -8,6 +8,7 @@ var OperationDefinitionParameterComponent = DS.Model.extend({
     documentation: DS.attr('string'),
     type: DS.attr('string'),
     profile: DS.belongsTo('reference', {embedded: true}),
-    part:  DS.hasMany('operation-definition-parameter-part-component', {embedded: true})
+    binding:  DS.belongsTo('operation-definition-parameter-binding-component', {embedded: true}),
+    part: DS.hasMany('operation-definition-parameter-component', {embedded: true})
 });
 export default OperationDefinitionParameterComponent;

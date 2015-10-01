@@ -37,6 +37,7 @@ var MedicationStatement = ApplicationSerializer.extend({
 				reasonForUseCodeableConcept : {embedded: 'always'},
 				reasonForUseReference : {embedded: 'always'},
 				effectivePeriod : {embedded: 'always'},
+				supportingInformation : {embedded: 'always'},
 				medicationCodeableConcept : {embedded: 'always'},
 				medicationReference : {embedded: 'always'},
 				dosage:  {embedded: 'always'}

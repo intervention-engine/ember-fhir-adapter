@@ -4,8 +4,7 @@ var DiagnosticOrderItemComponent = ApplicationSerializer.extend({
     attrs:{
         code : {embedded: 'always'},
 				specimen : {embedded: 'always'},
-				bodySiteCodeableConcept : {embedded: 'always'},
-				bodySiteReference : {embedded: 'always'},
+				bodySite : {embedded: 'always'},
 				event : {embedded: 'always'}
     }
 });

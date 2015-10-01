@@ -30,6 +30,7 @@ import DS from 'ember-data';
 
 var Patient = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
+    active: DS.attr('boolean'),
     name: DS.hasMany('human-name', {embedded: true}),
     telecom: DS.hasMany('contact-point', {embedded: true}),
     gender: DS.attr('string'),
@@ -46,7 +47,6 @@ var Patient = DS.Model.extend({
     communication:  DS.hasMany('patient-communication-component', {embedded: true}),
     careProvider: DS.hasMany('reference', {embedded: true}),
     managingOrganization: DS.belongsTo('reference', {embedded: true}),
-    link:  DS.hasMany('patient-link-component', {embedded: true}),
-    active: DS.attr('boolean')
+    link:  DS.hasMany('patient-link-component', {embedded: true})
 });
 export default Patient;

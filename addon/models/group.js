@@ -29,13 +29,13 @@ import DS from 'ember-data';
 
 
 var Group = DS.Model.extend({
-    identifier: DS.belongsTo('identifier', {embedded: true}),
+    identifier: DS.hasMany('identifier', {embedded: true}),
     type: DS.attr('string'),
     actual: DS.attr('boolean'),
     code: DS.belongsTo('codeable-concept', {embedded: true}),
     name: DS.attr('string'),
     quantity: DS.attr('number'),
     characteristic:  DS.hasMany('group-characteristic-component', {embedded: true}),
-    member: DS.hasMany('reference', {embedded: true})
+    member:  DS.hasMany('group-member-component', {embedded: true})
 });
 export default Group;

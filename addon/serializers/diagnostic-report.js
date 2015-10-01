@@ -30,15 +30,15 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var DiagnosticReport = ApplicationSerializer.extend({
     attrs: {
-        code : {embedded: 'always'},
-				issued : {embedded: 'always'},
+        identifier : {embedded: 'always'},
+				category : {embedded: 'always'},
+				code : {embedded: 'always'},
 				subject : {embedded: 'always'},
-				performer : {embedded: 'always'},
 				encounter : {embedded: 'always'},
-				identifier : {embedded: 'always'},
-				requestDetail : {embedded: 'always'},
-				serviceCategory : {embedded: 'always'},
 				effectivePeriod : {embedded: 'always'},
+				issued : {embedded: 'always'},
+				performer : {embedded: 'always'},
+				request : {embedded: 'always'},
 				specimen : {embedded: 'always'},
 				result : {embedded: 'always'},
 				imagingStudy : {embedded: 'always'},

@@ -6,6 +6,7 @@ var GroupCharacteristicComponent = DS.Model.extend({
     valueBoolean: DS.attr('boolean'),
     valueQuantity: DS.belongsTo('quantity', {embedded: true}),
     valueRange: DS.belongsTo('range', {embedded: true}),
-    exclude: DS.attr('boolean')
+    exclude: DS.attr('boolean'),
+    period: DS.belongsTo('period', {embedded: true})
 });
 export default GroupCharacteristicComponent;

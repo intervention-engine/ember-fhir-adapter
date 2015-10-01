@@ -4,6 +4,7 @@ var AuditEventParticipantComponent = ApplicationSerializer.extend({
     attrs:{
         role : {embedded: 'always'},
 				reference : {embedded: 'always'},
+				userId : {embedded: 'always'},
 				location : {embedded: 'always'},
 				policy : {embedded: 'always'},
 				media : {embedded: 'always'},

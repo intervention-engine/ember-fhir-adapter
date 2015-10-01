@@ -30,7 +30,14 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var TestScript = ApplicationSerializer.extend({
     attrs: {
-        fixture:  {embedded: 'always'},
+        url : {embedded: 'always'},
+				identifier : {embedded: 'always'},
+				contact:  {embedded: 'always'},
+				useContext : {embedded: 'always'},
+				metadata:  {embedded: 'always'},
+				fixture:  {embedded: 'always'},
+				profile : {embedded: 'always'},
+				variable:  {embedded: 'always'},
 				setup:  {embedded: 'always'},
 				test:  {embedded: 'always'},
 				teardown:  {embedded: 'always'}

@@ -29,18 +29,18 @@ import DS from 'ember-data';
 
 
 var NamingSystem = DS.Model.extend({
-    type: DS.attr('string'),
     name: DS.attr('string'),
-    date: DS.attr('date'),
     status: DS.attr('string'),
-    country: DS.attr('string'),
-    category: DS.belongsTo('codeable-concept', {embedded: true}),
-    responsible: DS.attr('string'),
-    description: DS.attr('string'),
-    usage: DS.attr('string'),
-    uniqueId:  DS.hasMany('naming-system-unique-id-component', {embedded: true}),
+    kind: DS.attr('string'),
     publisher: DS.attr('string'),
     contact:  DS.hasMany('naming-system-contact-component', {embedded: true}),
+    responsible: DS.attr('string'),
+    date: DS.attr('date'),
+    type: DS.belongsTo('codeable-concept', {embedded: true}),
+    description: DS.attr('string'),
+    useContext: DS.hasMany('codeable-concept', {embedded: true}),
+    usage: DS.attr('string'),
+    uniqueId:  DS.hasMany('naming-system-unique-id-component', {embedded: true}),
     replacedBy: DS.belongsTo('reference', {embedded: true})
 });
 export default NamingSystem;

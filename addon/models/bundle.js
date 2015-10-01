@@ -30,10 +30,9 @@ import DS from 'ember-data';
 
 var Bundle = DS.Model.extend({
     type: DS.attr('string'),
-    base: DS.attr('string'),
     total: DS.attr('number'),
     link:  DS.hasMany('bundle-link-component', {embedded: true}),
     entry:  DS.hasMany('bundle-entry-component', {embedded: true}),
-    signature: DS.attr('string')
+    signature: DS.belongsTo('signature', {embedded: true})
 });
 export default Bundle;

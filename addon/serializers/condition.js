@@ -45,9 +45,7 @@ var Condition = ApplicationSerializer.extend({
 				abatementRange : {embedded: 'always'},
 				stage:  {embedded: 'always'},
 				evidence:  {embedded: 'always'},
-				location:  {embedded: 'always'},
-				dueTo:  {embedded: 'always'},
-				occurredFollowing:  {embedded: 'always'}
+				bodySite : {embedded: 'always'}
     }
 });
 export default Condition;

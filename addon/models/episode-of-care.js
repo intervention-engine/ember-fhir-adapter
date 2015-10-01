@@ -33,10 +33,10 @@ var EpisodeOfCare = DS.Model.extend({
     status: DS.attr('string'),
     statusHistory:  DS.hasMany('episode-of-care-status-history-component', {embedded: true}),
     type: DS.hasMany('codeable-concept', {embedded: true}),
+    condition: DS.hasMany('reference', {embedded: true}),
     patient: DS.belongsTo('reference', {embedded: true}),
     managingOrganization: DS.belongsTo('reference', {embedded: true}),
     period: DS.belongsTo('period', {embedded: true}),
-    condition: DS.hasMany('reference', {embedded: true}),
     referralRequest: DS.hasMany('reference', {embedded: true}),
     careManager: DS.belongsTo('reference', {embedded: true}),
     careTeam:  DS.hasMany('episode-of-care-care-team-component', {embedded: true})

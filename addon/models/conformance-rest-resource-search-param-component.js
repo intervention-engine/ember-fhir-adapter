@@ -6,6 +6,7 @@ var ConformanceRestResourceSearchParamComponent = DS.Model.extend({
     type: DS.attr('string'),
     documentation: DS.attr('string'),
     target: DS.attr('string'),
+    modifier: DS.attr('string'),
     chain: DS.attr('string')
 });
 export default ConformanceRestResourceSearchParamComponent;

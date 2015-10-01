@@ -2,11 +2,13 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var MedicationAdministrationDosageComponent = ApplicationSerializer.extend({
     attrs:{
-        site : {embedded: 'always'},
+        siteCodeableConcept : {embedded: 'always'},
+				siteReference : {embedded: 'always'},
 				route : {embedded: 'always'},
 				method : {embedded: 'always'},
 				quantity : {embedded: 'always'},
-				rate : {embedded: 'always'}
+				rateRatio : {embedded: 'always'},
+				rateRange : {embedded: 'always'}
     }
 });
 export default MedicationAdministrationDosageComponent;

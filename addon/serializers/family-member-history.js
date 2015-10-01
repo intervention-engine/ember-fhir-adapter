@@ -38,6 +38,7 @@ var FamilyMemberHistory = ApplicationSerializer.extend({
 				ageRange : {embedded: 'always'},
 				deceasedAge : {embedded: 'always'},
 				deceasedRange : {embedded: 'always'},
+				note : {embedded: 'always'},
 				condition:  {embedded: 'always'}
     }
 });

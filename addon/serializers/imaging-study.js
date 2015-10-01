@@ -35,6 +35,7 @@ var ImagingStudy = ApplicationSerializer.extend({
 				accession : {embedded: 'always'},
 				identifier : {embedded: 'always'},
 				order : {embedded: 'always'},
+				modalityList : {embedded: 'always'},
 				referrer : {embedded: 'always'},
 				url : {embedded: 'always'},
 				numberOfSeries : {embedded: 'always'},

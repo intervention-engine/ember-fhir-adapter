@@ -30,8 +30,14 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var Observation = ApplicationSerializer.extend({
     attrs: {
-        code : {embedded: 'always'},
+        identifier : {embedded: 'always'},
 				category : {embedded: 'always'},
+				code : {embedded: 'always'},
+				subject : {embedded: 'always'},
+				encounter : {embedded: 'always'},
+				effectivePeriod : {embedded: 'always'},
+				issued : {embedded: 'always'},
+				performer : {embedded: 'always'},
 				valueQuantity : {embedded: 'always'},
 				valueCodeableConcept : {embedded: 'always'},
 				valueRange : {embedded: 'always'},
@@ -42,19 +48,11 @@ var Observation = ApplicationSerializer.extend({
 				valuePeriod : {embedded: 'always'},
 				dataAbsentReason : {embedded: 'always'},
 				interpretation : {embedded: 'always'},
-				effectivePeriod : {embedded: 'always'},
-				issued : {embedded: 'always'},
-				bodySiteCodeableConcept : {embedded: 'always'},
-				bodySiteReference : {embedded: 'always'},
+				bodySite : {embedded: 'always'},
 				method : {embedded: 'always'},
-				identifier : {embedded: 'always'},
-				subject : {embedded: 'always'},
 				specimen : {embedded: 'always'},
-				performer : {embedded: 'always'},
 				device : {embedded: 'always'},
-				encounter : {embedded: 'always'},
 				referenceRange:  {embedded: 'always'},
-				derivedFrom : {embedded: 'always'},
 				related:  {embedded: 'always'},
 				component:  {embedded: 'always'}
     }

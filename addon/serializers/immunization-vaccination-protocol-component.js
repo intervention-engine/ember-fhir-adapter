@@ -5,7 +5,7 @@ var ImmunizationVaccinationProtocolComponent = ApplicationSerializer.extend({
         doseSequence : {embedded: 'always'},
 				authority : {embedded: 'always'},
 				seriesDoses : {embedded: 'always'},
-				doseTarget : {embedded: 'always'},
+				targetDisease : {embedded: 'always'},
 				doseStatus : {embedded: 'always'},
 				doseStatusReason : {embedded: 'always'}
     }

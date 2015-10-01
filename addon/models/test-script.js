@@ -29,10 +29,24 @@ import DS from 'ember-data';
 
 
 var TestScript = DS.Model.extend({
+    url: DS.attr('string'),
+    version: DS.attr('string'),
     name: DS.attr('string'),
+    status: DS.attr('string'),
+    identifier: DS.belongsTo('identifier', {embedded: true}),
+    experimental: DS.attr('boolean'),
+    publisher: DS.attr('string'),
+    contact:  DS.hasMany('test-script-contact-component', {embedded: true}),
+    date: DS.attr('date'),
     description: DS.attr('string'),
+    useContext: DS.hasMany('codeable-concept', {embedded: true}),
+    requirements: DS.attr('string'),
+    copyright: DS.attr('string'),
+    metadata:  DS.belongsTo('test-script-metadata-component', {embedded: true}),
     multiserver: DS.attr('boolean'),
     fixture:  DS.hasMany('test-script-fixture-component', {embedded: true}),
+    profile: DS.hasMany('reference', {embedded: true}),
+    variable:  DS.hasMany('test-script-variable-component', {embedded: true}),
     setup:  DS.belongsTo('test-script-setup-component', {embedded: true}),
     test:  DS.hasMany('test-script-test-component', {embedded: true}),
     teardown:  DS.belongsTo('test-script-teardown-component', {embedded: true})

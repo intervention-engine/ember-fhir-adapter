@@ -30,8 +30,7 @@ import ApplicationSerializer from 'ember-fhir-adapter/serializers/application';
 
 var Bundle = ApplicationSerializer.extend({
     attrs: {
-        base : {embedded: 'always'},
-				total : {embedded: 'always'},
+        total : {embedded: 'always'},
 				link:  {embedded: 'always'},
 				entry:  {embedded: 'always'},
 				signature : {embedded: 'always'}

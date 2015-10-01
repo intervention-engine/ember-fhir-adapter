@@ -2,7 +2,9 @@
 
 The Ember on FHIR Adapter is designed to make interacting with FHIR servers from your Ember front end.
 
-Currently, this adapter only provides an adapter and serializer and does not provide models for the FHIR Resources. 
+As of 0.0.11 this adapter ships with models and serializers for all resources in FHIR DSTU2.1, if you require DSTU2 you can use 0.0.10
+
+Also, there are deprecation warnings if you use this with Ember 1.13.x, and this has not been tested with Ember 2.x.x if you are using 2.x.x and this works, let me know. If you require 2.x.x and this doesn't work please let me know with an issue. 
 
 # Installing Ember-fhir-adapter with Ember CLI
 

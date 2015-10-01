@@ -4,7 +4,10 @@ var AuditEventObjectComponent = ApplicationSerializer.extend({
     attrs:{
         identifier : {embedded: 'always'},
 				reference : {embedded: 'always'},
-				sensitivity : {embedded: 'always'},
+				type : {embedded: 'always'},
+				role : {embedded: 'always'},
+				lifecycle : {embedded: 'always'},
+				securityLabel : {embedded: 'always'},
 				query : {embedded: 'always'},
 				detail:  {embedded: 'always'}
     }

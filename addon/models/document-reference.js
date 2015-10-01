@@ -34,7 +34,6 @@ var DocumentReference = DS.Model.extend({
     subject: DS.belongsTo('reference', {embedded: true}),
     type: DS.belongsTo('codeable-concept', {embedded: true}),
     class: DS.belongsTo('codeable-concept', {embedded: true}),
-    format: DS.attr('string'),
     author: DS.hasMany('reference', {embedded: true}),
     custodian: DS.belongsTo('reference', {embedded: true}),
     authenticator: DS.belongsTo('reference', {embedded: true}),
@@ -44,8 +43,8 @@ var DocumentReference = DS.Model.extend({
     docStatus: DS.belongsTo('codeable-concept', {embedded: true}),
     relatesTo:  DS.hasMany('document-reference-relates-to-component', {embedded: true}),
     description: DS.attr('string'),
-    confidentiality: DS.hasMany('codeable-concept', {embedded: true}),
-    content: DS.hasMany('attachment', {embedded: true}),
+    securityLabel: DS.hasMany('codeable-concept', {embedded: true}),
+    content:  DS.hasMany('document-reference-content-component', {embedded: true}),
     context:  DS.belongsTo('document-reference-context-component', {embedded: true})
 });
 export default DocumentReference;

@@ -2,7 +2,7 @@ import DS from 'ember-data';
 
 var ImmunizationRecommendationRecommendationComponent = DS.Model.extend({
     date: DS.attr('date'),
-    vaccineType: DS.belongsTo('codeable-concept', {embedded: true}),
+    vaccineCode: DS.belongsTo('codeable-concept', {embedded: true}),
     doseNumber: DS.attr('number'),
     forecastStatus: DS.belongsTo('codeable-concept', {embedded: true}),
     dateCriterion:  DS.hasMany('immunization-recommendation-recommendation-date-criterion-component', {embedded: true}),

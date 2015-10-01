@@ -31,9 +31,9 @@ import DS from 'ember-data';
 var HealthcareService = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
     providedBy: DS.belongsTo('reference', {embedded: true}),
-    location: DS.belongsTo('reference', {embedded: true}),
     serviceCategory: DS.belongsTo('codeable-concept', {embedded: true}),
     serviceType:  DS.hasMany('healthcare-service-service-type-component', {embedded: true}),
+    location: DS.belongsTo('reference', {embedded: true}),
     serviceName: DS.attr('string'),
     comment: DS.attr('string'),
     extraDetails: DS.attr('string'),

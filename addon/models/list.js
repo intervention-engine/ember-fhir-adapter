@@ -34,6 +34,7 @@ var List = DS.Model.extend({
     code: DS.belongsTo('codeable-concept', {embedded: true}),
     subject: DS.belongsTo('reference', {embedded: true}),
     source: DS.belongsTo('reference', {embedded: true}),
+    encounter: DS.belongsTo('reference', {embedded: true}),
     status: DS.attr('string'),
     date: DS.attr('date'),
     orderedBy: DS.belongsTo('codeable-concept', {embedded: true}),

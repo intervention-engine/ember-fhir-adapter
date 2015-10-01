@@ -38,9 +38,10 @@ var CommunicationRequest = DS.Model.extend({
     requester: DS.belongsTo('reference', {embedded: true}),
     status: DS.attr('string'),
     encounter: DS.belongsTo('reference', {embedded: true}),
-    scheduledTime: DS.attr('date'),
+    scheduledDateTime: DS.attr('date'),
+    scheduledPeriod: DS.belongsTo('period', {embedded: true}),
     reason: DS.hasMany('codeable-concept', {embedded: true}),
-    orderedOn: DS.attr('date'),
+    requestedOn: DS.attr('date'),
     subject: DS.belongsTo('reference', {embedded: true}),
     priority: DS.belongsTo('codeable-concept', {embedded: true})
 });

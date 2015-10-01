@@ -32,6 +32,7 @@ var Device = ApplicationSerializer.extend({
     attrs: {
         identifier : {embedded: 'always'},
 				type : {embedded: 'always'},
+				note : {embedded: 'always'},
 				owner : {embedded: 'always'},
 				location : {embedded: 'always'},
 				patient : {embedded: 'always'},

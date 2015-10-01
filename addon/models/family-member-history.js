@@ -32,6 +32,7 @@ var FamilyMemberHistory = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
     patient: DS.belongsTo('reference', {embedded: true}),
     date: DS.attr('date'),
+    status: DS.attr('string'),
     name: DS.attr('string'),
     relationship: DS.belongsTo('codeable-concept', {embedded: true}),
     gender: DS.attr('string'),
@@ -46,7 +47,7 @@ var FamilyMemberHistory = DS.Model.extend({
     deceasedRange: DS.belongsTo('range', {embedded: true}),
     deceasedDate: DS.attr('date'),
     deceasedString: DS.attr('string'),
-    note: DS.attr('string'),
+    note: DS.belongsTo('annotation', {embedded: true}),
     condition:  DS.hasMany('family-member-history-condition-component', {embedded: true})
 });
 export default FamilyMemberHistory;

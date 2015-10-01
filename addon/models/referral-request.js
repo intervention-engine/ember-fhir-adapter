@@ -31,6 +31,7 @@ import DS from 'ember-data';
 var ReferralRequest = DS.Model.extend({
     status: DS.attr('string'),
     identifier: DS.hasMany('identifier', {embedded: true}),
+    date: DS.attr('date'),
     type: DS.belongsTo('codeable-concept', {embedded: true}),
     specialty: DS.belongsTo('codeable-concept', {embedded: true}),
     priority: DS.belongsTo('codeable-concept', {embedded: true}),

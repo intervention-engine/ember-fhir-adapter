@@ -2,9 +2,8 @@ import DS from 'ember-data';
 
 var ProvenanceAgentComponent = DS.Model.extend({
     role: DS.belongsTo('coding', {embedded: true}),
-    type: DS.belongsTo('coding', {embedded: true}),
-    referenceUri: DS.attr('string'),
-    referenceReference: DS.belongsTo('reference', {embedded: true}),
-    display: DS.attr('string')
+    actor: DS.belongsTo('reference', {embedded: true}),
+    userId: DS.belongsTo('identifier', {embedded: true}),
+    relatedAgent:  DS.hasMany('provenance-agent-related-agent-component', {embedded: true})
 });
 export default ProvenanceAgentComponent;

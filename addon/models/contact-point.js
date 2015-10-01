@@ -32,6 +32,7 @@ var ContactPoint = DS.Model.extend({
     system: DS.attr('string'),
     value: DS.attr('string'),
     use: DS.attr('string'),
+    rank: DS.attr('number'),
     period: DS.belongsTo('period', {embedded: true})
 });
 export default ContactPoint;

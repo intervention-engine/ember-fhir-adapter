@@ -30,9 +30,11 @@ import DS from 'ember-data';
 
 var Address = DS.Model.extend({
     use: DS.attr('string'),
+    type: DS.attr('string'),
     text: DS.attr('string'),
     line: DS.attr('string'),
     city: DS.attr('string'),
+    district: DS.attr('string'),
     state: DS.attr('string'),
     postalCode: DS.attr('string'),
     country: DS.attr('string'),

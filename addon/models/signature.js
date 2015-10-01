@@ -33,6 +33,7 @@ var Signature = DS.Model.extend({
     when: DS.attr('date'),
     whoUri: DS.attr('string'),
     whoReference: DS.belongsTo('reference', {embedded: true}),
+    contentType: DS.attr('string'),
     blob: DS.attr('string')
 });
 export default Signature;

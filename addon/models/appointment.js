@@ -37,9 +37,9 @@ var Appointment = DS.Model.extend({
     description: DS.attr('string'),
     start: DS.attr('date'),
     end: DS.attr('date'),
+    minutesDuration: DS.attr('number'),
     slot: DS.hasMany('reference', {embedded: true}),
     comment: DS.attr('string'),
-    order: DS.belongsTo('reference', {embedded: true}),
     participant:  DS.hasMany('appointment-participant-component', {embedded: true})
 });
 export default Appointment;

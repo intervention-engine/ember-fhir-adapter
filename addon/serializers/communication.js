@@ -38,7 +38,8 @@ var Communication = ApplicationSerializer.extend({
 				medium : {embedded: 'always'},
 				encounter : {embedded: 'always'},
 				reason : {embedded: 'always'},
-				subject : {embedded: 'always'}
+				subject : {embedded: 'always'},
+				requestDetail : {embedded: 'always'}
     }
 });
 export default Communication;

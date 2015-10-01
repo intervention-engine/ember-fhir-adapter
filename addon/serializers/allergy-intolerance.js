@@ -35,7 +35,8 @@ var AllergyIntolerance = ApplicationSerializer.extend({
 				patient : {embedded: 'always'},
 				reporter : {embedded: 'always'},
 				substance : {embedded: 'always'},
-				event:  {embedded: 'always'}
+				note : {embedded: 'always'},
+				reaction:  {embedded: 'always'}
     }
 });
 export default AllergyIntolerance;

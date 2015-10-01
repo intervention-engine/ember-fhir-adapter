@@ -32,13 +32,15 @@ var ProcedureRequest = ApplicationSerializer.extend({
     attrs: {
         identifier : {embedded: 'always'},
 				subject : {embedded: 'always'},
-				type : {embedded: 'always'},
-				bodySite:  {embedded: 'always'},
-				indication : {embedded: 'always'},
-				timingPeriod : {embedded: 'always'},
-				timingTiming : {embedded: 'always'},
+				code : {embedded: 'always'},
+				bodySite : {embedded: 'always'},
+				reasonCodeableConcept : {embedded: 'always'},
+				reasonReference : {embedded: 'always'},
+				scheduledPeriod : {embedded: 'always'},
+				scheduledTiming : {embedded: 'always'},
 				encounter : {embedded: 'always'},
 				performer : {embedded: 'always'},
+				notes : {embedded: 'always'},
 				asNeededCodeableConcept : {embedded: 'always'},
 				orderer : {embedded: 'always'}
     }

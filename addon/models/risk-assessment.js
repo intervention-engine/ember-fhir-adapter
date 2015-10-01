@@ -32,6 +32,7 @@ var RiskAssessment = DS.Model.extend({
     subject: DS.belongsTo('reference', {embedded: true}),
     date: DS.attr('date'),
     condition: DS.belongsTo('reference', {embedded: true}),
+    encounter: DS.belongsTo('reference', {embedded: true}),
     performer: DS.belongsTo('reference', {embedded: true}),
     identifier: DS.belongsTo('identifier', {embedded: true}),
     method: DS.belongsTo('codeable-concept', {embedded: true}),

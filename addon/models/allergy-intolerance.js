@@ -30,6 +30,7 @@ import DS from 'ember-data';
 
 var AllergyIntolerance = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
+    onset: DS.attr('date'),
     recordedDate: DS.attr('date'),
     recorder: DS.belongsTo('reference', {embedded: true}),
     patient: DS.belongsTo('reference', {embedded: true}),
@@ -40,7 +41,7 @@ var AllergyIntolerance = DS.Model.extend({
     type: DS.attr('string'),
     category: DS.attr('string'),
     lastOccurence: DS.attr('date'),
-    comment: DS.attr('string'),
-    event:  DS.hasMany('allergy-intolerance-event-component', {embedded: true})
+    note: DS.belongsTo('annotation', {embedded: true}),
+    reaction:  DS.hasMany('allergy-intolerance-reaction-component', {embedded: true})
 });
 export default AllergyIntolerance;

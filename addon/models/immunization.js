@@ -30,8 +30,9 @@ import DS from 'ember-data';
 
 var Immunization = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
+    status: DS.attr('string'),
     date: DS.attr('date'),
-    vaccineType: DS.belongsTo('codeable-concept', {embedded: true}),
+    vaccineCode: DS.belongsTo('codeable-concept', {embedded: true}),
     patient: DS.belongsTo('reference', {embedded: true}),
     wasNotGiven: DS.attr('boolean'),
     reported: DS.attr('boolean'),
@@ -45,6 +46,7 @@ var Immunization = DS.Model.extend({
     site: DS.belongsTo('codeable-concept', {embedded: true}),
     route: DS.belongsTo('codeable-concept', {embedded: true}),
     doseQuantity: DS.belongsTo('quantity', {embedded: true}),
+    note: DS.hasMany('annotation', {embedded: true}),
     explanation:  DS.belongsTo('immunization-explanation-component', {embedded: true}),
     reaction:  DS.hasMany('immunization-reaction-component', {embedded: true}),
     vaccinationProtocol:  DS.hasMany('immunization-vaccination-protocol-component', {embedded: true})

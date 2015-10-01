@@ -35,7 +35,8 @@ var RelatedPerson = DS.Model.extend({
     name: DS.belongsTo('human-name', {embedded: true}),
     telecom: DS.hasMany('contact-point', {embedded: true}),
     gender: DS.attr('string'),
-    address: DS.belongsTo('address', {embedded: true}),
+    birthDate: DS.attr('date'),
+    address: DS.hasMany('address', {embedded: true}),
     photo: DS.hasMany('attachment', {embedded: true}),
     period: DS.belongsTo('period', {embedded: true})
 });

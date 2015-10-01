@@ -36,8 +36,8 @@ var Appointment = ApplicationSerializer.extend({
 				priority : {embedded: 'always'},
 				start : {embedded: 'always'},
 				end : {embedded: 'always'},
+				minutesDuration : {embedded: 'always'},
 				slot : {embedded: 'always'},
-				order : {embedded: 'always'},
 				participant:  {embedded: 'always'}
     }
 });

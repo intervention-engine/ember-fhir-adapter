@@ -3,7 +3,7 @@ import DS from 'ember-data';
 var AuditEventParticipantComponent = DS.Model.extend({
     role: DS.hasMany('codeable-concept', {embedded: true}),
     reference: DS.belongsTo('reference', {embedded: true}),
-    userId: DS.attr('string'),
+    userId: DS.belongsTo('identifier', {embedded: true}),
     altId: DS.attr('string'),
     name: DS.attr('string'),
     requestor: DS.attr('boolean'),

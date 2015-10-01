@@ -31,7 +31,7 @@ import DS from 'ember-data';
 var Device = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
     type: DS.belongsTo('codeable-concept', {embedded: true}),
-    note: DS.attr('string'),
+    note: DS.hasMany('annotation', {embedded: true}),
     status: DS.attr('string'),
     manufacturer: DS.attr('string'),
     model: DS.attr('string'),

@@ -32,6 +32,7 @@ var RiskAssessment = ApplicationSerializer.extend({
     attrs: {
         subject : {embedded: 'always'},
 				condition : {embedded: 'always'},
+				encounter : {embedded: 'always'},
 				performer : {embedded: 'always'},
 				identifier : {embedded: 'always'},
 				method : {embedded: 'always'},

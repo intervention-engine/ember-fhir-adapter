@@ -31,11 +31,11 @@ import DS from 'ember-data';
 var AppointmentResponse = DS.Model.extend({
     identifier: DS.hasMany('identifier', {embedded: true}),
     appointment: DS.belongsTo('reference', {embedded: true}),
+    start: DS.attr('date'),
+    end: DS.attr('date'),
     participantType: DS.hasMany('codeable-concept', {embedded: true}),
     actor: DS.belongsTo('reference', {embedded: true}),
     participantStatus: DS.attr('string'),
-    comment: DS.attr('string'),
-    start: DS.attr('date'),
-    end: DS.attr('date')
+    comment: DS.attr('string')
 });
 export default AppointmentResponse;

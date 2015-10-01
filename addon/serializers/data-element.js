@@ -32,8 +32,8 @@ var DataElement = ApplicationSerializer.extend({
     attrs: {
         url : {embedded: 'always'},
 				identifier : {embedded: 'always'},
-				useContext : {embedded: 'always'},
 				contact:  {embedded: 'always'},
+				useContext : {embedded: 'always'},
 				mapping:  {embedded: 'always'},
 				element : {embedded: 'always'}
     }
