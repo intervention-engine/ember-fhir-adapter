@@ -9,7 +9,7 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
       hash[key.camelize()] = hash[key];
     delete hash[key];
     }
-    hash.resourceType = snapshot.typeKey.capitalize();
+    hash.resourceType = snapshot.typeKey.camelize().capitalize();
 
     return hash;
 
