@@ -4,7 +4,7 @@ export default DS.RESTAdapter.extend({
   defaultSerializer: '-fhir',
 
   pathForType: function(type){
-    return Ember.String.capitalize(type);
+    return Ember.String.capitalize(Ember.String.camelize(type));
   },
 
 
