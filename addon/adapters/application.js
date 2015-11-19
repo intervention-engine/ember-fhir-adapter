@@ -7,6 +7,14 @@ export default DS.RESTAdapter.extend({
     return Ember.String.capitalize(Ember.String.camelize(type));
   },
 
+  createRecord: function (store, type, snapshot) {
+    if (snapshot.id) {
+      // if we have set an ID on this record, use "update" instead of "create"
+      // (triggers a PUT instead of POST)
+      return this.updateRecord(store, type, snapshot);
+    }
+    return this._super(store, type, snapshot);
+  },
 
   buildURL: function(modelName, id, snapshot, requestType, query) {
     if(requestType === "fhirQuery"){
