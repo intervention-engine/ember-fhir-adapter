@@ -50,7 +50,17 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     }
 
     payload.id = payload.id || id || Ember.generateGuid({}, type.typeKey);
+
     return this._super(store, type, payload, id, requestType);
+  },
+  extractArray: function (store, typeClass, arrayPayload){
+    var normalizedPayload = this.normalizePayload(arrayPayload);
+
+    return normalizedPayload.map(function (singlePayload) {
+      let typeClass = store.modelFor(singlePayload.resourceType);
+      let serializer = store.serializerFor(singlePayload.resourceType);
+      return serializer.normalize(typeClass, singlePayload);
+    });
   }
 });
 
