@@ -1,119 +1,72 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
+export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
+  isNewSerializerAPI: true,
 
   serialize: function(snapshot, options){
     let hash = this._super(snapshot, options);
-    for(var key in hash){
-      hash[key.camelize()] = hash[key];
-    delete hash[key];
-    }
     hash.resourceType = snapshot.typeKey.camelize().capitalize();
 
     return hash;
 
   },
 
-  hasEmbeddedOption: function(type, attr){
-    var meta = type.metaForProperty(attr);
-    return meta && meta.options.embedded;
+  serializeIntoHash: function (hash, typeClass, snapshot, options){
+    Ember.merge( hash, this.serialize(snapshot, options));
   },
 
-  hasSearchByOption: function(type, attr){
-    var meta = type.metaForProperty(attr);
-    return meta && meta.options.searchBy;
+  extractId: function(modelClass, resourceHash){
+    return resourceHash.id || Ember.generateGuid({},modelClass.modelName);
   },
-
-  serializeIntoHash: function(hash, type, record, options){
-    Ember.merge(hash, this.serialize(record, options));
-  },
-
-  keyForAttribute: function(key){
-    return Ember.String.capitalize(key);
-  },
-
-  normalize: function(typeClass, hash){
-    hash.id = hash.id || Ember.generateGuid({}, typeClass.typeKey);
-    return extractEmbeddedRecords(this, this.store, typeClass, hash);
-  },
-
-  extract: function(store, type, payload, id, requestType){
-    if (payload == null) {
-      return [];
+  normalizeResponse: function(store, primaryModelClass, payload, id, requestType)  {
+    let resourceArray = null;
+    if(!payload.entry){
+      resourceArray = payload;
     }
-
-    if (payload.resourceType === "Bundle" && payload.total > 0) {
-      // If this is DSTU1 you can use content in place of resource
-
-      payload = payload.entry.mapBy("resource") || [];
+    else{
+      resourceArray = payload.entry.mapBy('resource');
     }
-
-    payload.id = payload.id || id || Ember.generateGuid({}, type.typeKey);
-
-    return this._super(store, type, payload, id, requestType);
+    let hash = {};
+    hash[Ember.String.pluralize(primaryModelClass.modelName)] = resourceArray;
+    let results = this._super(store, primaryModelClass, hash, id, requestType);
+    return results;
   },
-  extractArray: function (store, typeClass, arrayPayload){
-    var normalizedPayload = this.normalizePayload(arrayPayload);
 
-    return normalizedPayload.map(function (singlePayload) {
-      let typeClass = store.modelFor(singlePayload.resourceType);
-      let serializer = store.serializerFor(singlePayload.resourceType);
-      return serializer.normalize(typeClass, singlePayload);
+  normalizeArray: function(store, modelName, arrayHash, prop){
+    var documentHash = {
+      data: [],
+      included: []
+    };
+
+    /*jshint loopfunc:true*/
+    arrayHash.map(function(hash){
+      let modelClass = store.modelFor(hash.resourceType);
+      let serializer = store.serializerFor(hash.resourceType);
+      var _serializer$normalize = serializer.normalize(modelClass, hash, prop);
+
+      var data = _serializer$normalize.data;
+      // var included = _serializer$normalize.included;
+      documentHash.data.push(data);
     });
+    return documentHash;
+  },
+
+  extractRelationship: function (relationshipModelName, relationshipHash) {
+    if (Ember.isNone(relationshipHash)) {
+      return null;
+    }
+    /*
+      When `relationshipHash` is an object it usually means that the relationship
+      is polymorphic. It could however also be embedded resources that the
+      EmbeddedRecordsMixin has be able to process.
+    */
+    if (Ember.typeOf(relationshipHash) === "object") {
+      if (relationshipHash.id) {
+        relationshipHash.id = coerceId(relationshipHash.id);
+      }
+      return relationshipHash;
+    }
+    return { id: this.extractID(relationshipHash), type: relationshipModelName };
   }
 });
-
-
-// chooses a relationship kind to branch which function is used to update payload
-// does not change payload if attr is not embedded
-function extractEmbeddedRecords(serializer, store, typeClass, partial) {
-
-  typeClass.eachRelationship(function(key, relationship) {
-    if (serializer.hasDeserializeRecordsOption(key) || serializer.hasEmbeddedOption(typeClass, key)) {
-      var embeddedTypeClass = store.modelFor(relationship.type);
-      if (relationship.kind === "hasMany") {
-        extractEmbeddedHasMany(store, key, embeddedTypeClass, partial);
-      }
-      if (relationship.kind === "belongsTo") {
-        extractEmbeddedBelongsTo(store, key, embeddedTypeClass, partial);
-      }
-    }
-  });
-
-  return partial;
-}
-
-// handles embedding for `hasMany` relationship
-function extractEmbeddedHasMany(store, key, embeddedTypeClass, hash) {
-  if (!hash[key]) {
-    return hash;
-  }
-
-  var ids = [];
-
-  var embeddedSerializer = store.serializerFor(embeddedTypeClass.typeKey);
-  hash[key].forEach(function(data) {
-    var embeddedRecord = embeddedSerializer.normalize(embeddedTypeClass, data, null);
-    store.push(embeddedTypeClass.typeKey, embeddedRecord);
-    ids.push(embeddedRecord.id);
-  });
-
-  hash[key] = ids;
-  return hash;
-}
-
-
-function extractEmbeddedBelongsTo(store, key, embeddedTypeClass, hash) {
-  if (!hash[key]) {
-    return hash;
-  }
-
-  var embeddedSerializer = store.serializerFor(embeddedTypeClass.typeKey);
-  var embeddedRecord = embeddedSerializer.normalize(embeddedTypeClass, hash[key], null);
-  store.push(embeddedTypeClass.typeKey, embeddedRecord);
-
-  hash[key] = embeddedRecord.id;
-  //TODO Need to add a reference to the parent later so relationship works between both `belongsTo` records
-  return hash;
-}
