@@ -6,7 +6,7 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
 
   serialize: function(snapshot, options){
     let hash = this._super(snapshot, options);
-    hash.resourceType = snapshot.typeKey.camelize().capitalize();
+    hash.resourceType = snapshot.modelName.camelize().capitalize();
 
     return hash;
 
@@ -22,13 +22,21 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
   normalizeResponse: function(store, primaryModelClass, payload, id, requestType)  {
     let resourceArray = null;
     if(!payload.entry){
-      resourceArray = payload;
+      resourceArray = [payload];
     }
     else{
       resourceArray = payload.entry.mapBy('resource');
     }
     let hash = {};
-    hash[Ember.String.pluralize(primaryModelClass.modelName)] = resourceArray;
+    //hash[Ember.String.pluralize(primaryModelClass.modelName)] = resourceArray;
+    // payload entries may have different resource types, hash them individually
+    for (var i = 0; i < resourceArray.length; i++) {
+      var type = resourceArray[i].resourceType.dasherize().pluralize();
+      if (hash[type] === undefined) {
+        hash[type] = [];
+      }
+      hash[type].push(resourceArray[i]);
+    }
     let results = this._super(store, primaryModelClass, hash, id, requestType);
     return results;
   },
