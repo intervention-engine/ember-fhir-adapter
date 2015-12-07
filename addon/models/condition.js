@@ -46,7 +46,7 @@ var Condition = DS.Model.extend({
     onsetString: DS.attr('string'),
     abatementDateTime: DS.attr('date'),
     abatementAge: DS.belongsTo('quantity', {embedded: true}),
-    abatementBoolean: DS.attr('boolean'),
+    abatementBoolean: DS.attr('nullable-boolean', {default:null}),
     abatementPeriod: DS.belongsTo('period', {embedded: true}),
     abatementRange: DS.belongsTo('range', {embedded: true}),
     abatementString: DS.attr('string'),
