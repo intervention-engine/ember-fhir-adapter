@@ -4,7 +4,7 @@ The Ember on FHIR Adapter is designed to make interacting with FHIR servers from
 
 As of 0.0.11 this adapter ships with models and serializers for all resources in FHIR DSTU2.1, if you require DSTU2 you can use 0.0.10
 
-Also, there are deprecation warnings if you use this with Ember 1.13.x, and this has not been tested with Ember 2.x.x if you are using 2.x.x and this works, let me know. If you require 2.x.x and this doesn't work please let me know with an issue. 
+As of 2.0.0 this adapter now supports the new Ember Data serializer API which should make keeping up with Ember Data releases simpler. There should no longer be any deprecation notices coming from inside the adapter. 
 
 # Installing Ember-fhir-adapter with Ember CLI
 
@@ -16,31 +16,4 @@ $ ember install ember-fhir-adapter
 
 This will add Ember-fhir-adapter as a dependency in your ```bower.json```.
 
-This adapter is built to operate with DSTU2 compliant servers.
-
-
-
-
-This README outlines the details of collaborating on this Ember addon.
-
-## Installation
-
-* `git clone` this repository
-* `npm install`
-* `bower install`
-
-## Running
-
-* `ember server`
-* Visit your app at http://localhost:4200.
-
-## Running Tests
-
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+This adapter is built to operate with DSTU2.1 compliant servers due to the bundling of models. 
