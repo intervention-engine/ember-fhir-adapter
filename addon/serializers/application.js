@@ -1,13 +1,13 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
+
 export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
   isNewSerializerAPI: true,
 
   serialize: function(snapshot, options){
     let hash = this._super(snapshot, options);
     hash.resourceType = snapshot.modelName.camelize().capitalize();
-
     return hash;
 
   },
@@ -54,7 +54,7 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
       var _serializer$normalize = serializer.normalize(modelClass, hash, prop);
 
       var data = _serializer$normalize.data;
-      // var included = _serializer$normalize.included;
+      documentHash.included = documentHash.included.concat(_serializer$normalize.included);
       documentHash.data.push(data);
     });
     return documentHash;
@@ -70,11 +70,11 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
       EmbeddedRecordsMixin has be able to process.
     */
     if (Ember.typeOf(relationshipHash) === "object") {
-      if (relationshipHash.id) {
-        relationshipHash.id = coerceId(relationshipHash.id);
+      if (!relationshipHash.id) {
+        relationshipHash.id = Ember.generateGuid({},relationshipModelName);
       }
       return relationshipHash;
     }
-    return { id: this.extractID(relationshipHash), type: relationshipModelName };
+    return { id: this.extractId(relationshipHash), type: relationshipModelName };
   }
 });
